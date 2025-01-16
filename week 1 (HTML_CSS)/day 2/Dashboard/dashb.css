@@ -1,0 +1,323 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.masterCard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 80px;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    background-color: #F8F9FA;
+}
+
+.containerCard {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E8EAF6;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-image {
+    background-position: center;
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(171, 171, 171, 0.255);
+    margin-bottom: 20px;
+}
+
+.wrapperCard h1 {
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.wrapperCard p {
+    color: #444;
+    font-size: 1rem;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.button-wrapperCard {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-details,
+.btn-buy {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-details {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-details:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-buy {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-buy:hover {
+    background-color: #1c7430;
+    transform: scale(1.05);
+}
+
+/* Mastercard ends */
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    transition: all 0.3s ease;
+    color: whitesmoke;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: #007bffa8
+}
+
+.NavList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.NavList ul {
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    margin-right: 28px;
+    gap: 30px;
+}
+
+.NavList li a:visited,a:link{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    gap: 30px;
+}
+
+.NavList input,
+.NavList select {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    display: none;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(19, 8, 50, 0.95);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+}
+
+.sidebar .NavImage {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar ul li {
+    color: white;
+    font-size: 1rem;
+}
+
+.sidebar ul input,
+.sidebar ul select {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.sidebarCheckbox {
+    display: none;
+}
+
+.sidebarToggleLabel {
+    display: none;
+    position: fixed;
+    width: 100%;
+    color: #007bffa8;
+    height: 50px;
+    vertical-align: middle;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.sidebarCheckboxGoback {
+    display: none;
+}
+
+
+/* media queries */
+@media (max-width:900px) {
+    .card-image {
+        height: 200px;
+    }
+
+    .wrapperCard h1 {
+        color: black;
+        text-transform: uppercase;
+        font-size: 1.34rem;
+        margin: 10px 0;
+    }
+
+    .btn-details,
+    .btn-buy {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .navbarContainer {
+        display: none;
+    }
+
+    .sidebarToggleLabel {
+        display: block;
+        background-color: #007bffa8;
+        cursor: pointer;
+    }
+
+    .sidebarCheckbox:checked~.sidebar {
+        left: 0;
+    }
+
+    .sidebarCheckbox:checked~.sidebarToggleLabel {
+        background: none;
+        font-size: 1rem;
+    }
+
+    .masterCard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-image {
+        height: 160px;
+    }
+
+    .wrapperCard h1 {
+        color: black;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        margin: 12px 0;
+    }
+
+    .wrapperCard p {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    .btn-details,
+    .btn-buy {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+}
+
+@media (max-width:550px) {
+    .masterCard {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card-image {
+        height: 130px;
+    }
+
+    .wrapperCard h1 {
+        color: black;
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin: 13px 0;
+    }
+
+    .wrapperCard p {
+        margin: 8px 0;
+        font-size: 0.8rem;
+    }
+
+    .btn-details,
+    .btn-buy {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+}
