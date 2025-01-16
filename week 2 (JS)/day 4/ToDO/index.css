@@ -1,0 +1,116 @@
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+}
+
+.wrapper {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type=text] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+}
+table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.editButton {
+  background: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.editButton:hover {
+  background: #0056b3;
+}
+
+.removeButton {
+  background: #dc3545;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.removeButton:hover {
+  background: #c82333;
+}
+
+.editingArea {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editField {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+}
+
+.finalEditButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+.finalEditButton:hover {
+  background: #218838;
+}/*# sourceMappingURL=index.css.map */
