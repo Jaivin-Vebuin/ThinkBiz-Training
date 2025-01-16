@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- login -->
+    <div class="mainDiv">
+        <div class="formDiv">
+            <!-- form section -->
+            <form class="formData" action="../../day 2/Dashboard/dashb.html" method="get">
+                <p class="heading">Welcome back</h3>
+                <p class="sub-heading">Please enter the details</p>
+                <label for="email">Email address</label>
+                <input type="email" name="email" id="email" placeholder="email@example.com">
+                <p id="email-error"></p>
+                <!-- <br> -->
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="********">
+                <p id="password-error"></p>
+                <!-- <br> -->
+                <button id="submit" class="submit" type="submit">Sign in</button>
+                <!-- <br> -->
+                <div id="google-sign-in" class="google"><img src="../Images/google.png" width="15px" height="15px">Sign in with Google</div>
+                <p class="signUp">Don't have account ? <span><a href="../SignUp/SignUp.html">Sign Up</a></span></p>
+            </form>
+        </div>
+        <div class="imageDiv">
+            <!-- image section -->
+            <img src="../Images/pic-1.png" alt="no image">
+        </div>
+    </div>
+
+
+    <script src="../../day 3/index_login.js" async defer></script>
+</body>
+
+</html>
