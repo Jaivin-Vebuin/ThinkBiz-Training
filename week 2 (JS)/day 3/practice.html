@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+
+<body>
+    <h1>this is practice html</h1>
+    <button id="myButton">Click me</button>
+    <div id="div1"> this is demo div 1</div>
+    <script src="./practice_week_2.js" async>
+        // Basic I/O
+        alert("Hello, world!");
+        let userName = prompt("What's your name?");
+        console.log(`Hello, ${userName}`);
+
+        // getElementById 
+        let button = document.getElementById('myButton');
+        // event listener, => by interacting with elemt what should be happened
+        button.addEventListener('click', () => alert('Button clicked!'));
+
+        // querySelector
+        let element = document.querySelector('div');
+        element.style.backgroundColor = 'red';
+        // also there are getElemntByClassName, ..ByTagName, ..ByAnimation, ..ByName
+    </script>
+</body>
+
+</html>
