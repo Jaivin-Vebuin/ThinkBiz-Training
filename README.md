@@ -1,2 +1,2 @@
-# ThinkBiz-Training
-training tasks for interns
+## ThinkBiz-Training
+Week-wise tasks of training.
