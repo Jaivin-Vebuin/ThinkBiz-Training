@@ -1,5 +1,5 @@
 var _a, _b;
-// Define the array with the type `TodoArray`
+// Define the array with the type => TodoArray
 let todoArray = JSON.parse((_a = localStorage.getItem("message")) !== null && _a !== void 0 ? _a : "[]");
 // Function to set all the data to localStorage
 function setAllData() {
