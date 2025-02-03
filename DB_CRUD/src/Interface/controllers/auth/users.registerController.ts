@@ -6,7 +6,7 @@ import { userReg } from "../../../Domain/model/userModel";
 // registration is creation
 export const registerUserController = (userRepo: userPort) => async (req: Request, res: Response) => {
     try {
-        const data: userReg = { name: req.body.name, email: req.body.email, password: req.body.password, role: req.body.role, age: req.body.age };
+        const data: userReg =req.body;
         const response = await createUserUseCase(data, userRepo);
         res.status(201).send({
             response

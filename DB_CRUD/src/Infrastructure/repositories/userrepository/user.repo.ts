@@ -6,11 +6,6 @@ import { deleteUserQuery, getAllUserQuery, getUserByEmailQuery, getUserByIDQuery
 
 export const UserRepository: userPort = {
     registerUserPort: async (user: userReg): Promise<userReg> => {
-
-        const [existingUser] = await dbConnection.execute<RowDataPacket[]>(getUserByEmailQuery,[user.email]);
-        if (existingUser.length > 0) {
-            throw new Error("User with this email is already registered.");
-        }
         const values = [user.name, user.email, user.password, user.role, user.age]
         const [result] = await dbConnection.query<RowDataPacket[]>(registerUserQuery, values);
         if (result.length === 0) {
@@ -19,21 +14,29 @@ export const UserRepository: userPort = {
         return { ...user };
     },
     loginUserPort: async (user: userLogin): Promise<returnUserData> => {
-        const query = getAllUserQuery;
-        const [users] = await dbConnection.execute<RowDataPacket[]>(query);
-        const validUser = users.find((u: RowDataPacket) => u.email === user.email);
-        if (!validUser || validUser.password !== user.password) {
-            throw new Error('Invalid credentials');
-        }
+        const [users] = await dbConnection.execute<RowDataPacket[]>(getAllUserQuery);
         return {
-            id: validUser.id,
-            name:validUser.name,
-            email: validUser.email,
-            role: validUser.role,
-            age:validUser.age
+            id: users[0].id,
+            name:users[0].name,
+            email: users[0].email,
+            role: users[0].role,
+            age:users[0].age
         };
     },
-    getAllUserPort: async (): Promise<returnUserData[]> => {
+    getAllUserPortIntermediate : async(user:userLogin): Promise<userReg[]> => {
+        const query = getAllUserQuery;
+        const [users] = await dbConnection.execute<RowDataPacket[]>(query);
+        
+        
+        return users.map((user) => ({
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role,
+            age: user.age,
+        }));
+    },
+    getAllUserPort: async (email:string): Promise<returnUserData[]> => {
         const [rows] = await dbConnection.execute<RowDataPacket[]>(getAllUserQuery);
         if (rows.length === 0) {
             throw new Error("No users existed. !!");
@@ -53,11 +56,9 @@ export const UserRepository: userPort = {
         }
         return { id: rows[0].id, name: rows[0].name, email: rows[0].email, role: rows[0].role, age: rows[0].age }
     },
-    updateUserPort: async (id: number, user: returnUpdateUserData): Promise<returnUpdateUserData> => {
-        const [rows] = await dbConnection.execute<RowDataPacket[]>(getUserByIDQuery, [id]);
-        const values = [user.name ?? rows[0].name, user.email ?? rows[0].email, user.password ?? rows[0].password, user.age ?? rows[0].age, id]
-        const [data] = await dbConnection.execute<ResultSetHeader>(updateUserQuery, values)
-        if (data.affectedRows !== 0) {
+    updateUserPort: async ( user: returnUpdateUserData): Promise<returnUpdateUserData> => { 
+        const [data]=await dbConnection.query(updateUserQuery, [user,user.id]);
+        if (data) {
             return { ...user }
         }
         else {

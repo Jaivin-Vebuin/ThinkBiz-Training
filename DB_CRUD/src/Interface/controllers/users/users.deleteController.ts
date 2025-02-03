@@ -5,9 +5,9 @@ import { userPort } from "../../../Application/port/users.port";
 
 export const deleteUserByIDController = (userRepo: userPort)=> async (req:Request,res:Response) => {
     try {
-        const decodedData = res.locals.user.role;
-        const id = parseInt(req.params.id);
-        const response = await deleteUserUseCase(decodedData,id,userRepo)
+        const decodedTokenData = res.locals.user;
+        const data = parseInt(req.body.id);
+        const response = await deleteUserUseCase(decodedTokenData,data,userRepo)
         if (!response) { 
             res.status(404).send({
                 msg: "User not found.",

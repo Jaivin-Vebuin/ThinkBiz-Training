@@ -5,8 +5,6 @@ import { userLogin } from "../../../Domain/model/userModel";
 
 export const loginUserController = (userRepo: userPort) => async (req: Request, res: Response): Promise<void> => {
     try {
-        // const {email, password} = req.body;
-        // const existingToken = req.header('Authorization')?.replace('Bearer ', '') ?? '';
         const data:userLogin = {email: req.body.email, password: req.body.password}
         const token = await loginUserUseCase(data, userRepo);
         res.status(200).json({ token });
