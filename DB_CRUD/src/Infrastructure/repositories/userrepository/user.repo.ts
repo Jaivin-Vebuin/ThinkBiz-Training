@@ -13,7 +13,7 @@ export const UserRepository: userPort = {
         }
         return { ...user };
     },
-    loginUserPort: async (user: userLogin): Promise<returnUserData> => {
+    loginUserPort: async (user:userLogin): Promise<returnUserData> => {
         const [users] = await dbConnection.execute<RowDataPacket[]>(getAllUserQuery);
         return {
             id: users[0].id,
@@ -23,11 +23,9 @@ export const UserRepository: userPort = {
             age:users[0].age
         };
     },
-    getAllUserPortIntermediate : async(user:userLogin): Promise<userReg[]> => {
+    getAllUserPortIntermediate : async(): Promise<userReg[]> => {
         const query = getAllUserQuery;
         const [users] = await dbConnection.execute<RowDataPacket[]>(query);
-        
-        
         return users.map((user) => ({
             name: user.name,
             email: user.email,
@@ -36,7 +34,7 @@ export const UserRepository: userPort = {
             age: user.age,
         }));
     },
-    getAllUserPort: async (email:string): Promise<returnUserData[]> => {
+    getAllUserPort: async (): Promise<returnUserData[]> => {
         const [rows] = await dbConnection.execute<RowDataPacket[]>(getAllUserQuery);
         if (rows.length === 0) {
             throw new Error("No users existed. !!");
@@ -49,8 +47,8 @@ export const UserRepository: userPort = {
             age: row.age
         }));
     },
-    getSpecificUserPort: async (user: getUserData): Promise<returnUserData> => {
-        const [rows] = await dbConnection.execute<RowDataPacket[]>(getUserByIDQuery, [user.id]);
+    getSpecificUserPort: async (userID: number): Promise<returnUserData> => {
+        const [rows] = await dbConnection.execute<RowDataPacket[]>(getUserByIDQuery, [userID]);
         if (rows.length === 0) {
             throw new Error("User with provided id not found.");
         }
@@ -74,8 +72,4 @@ export const UserRepository: userPort = {
             return "error deleting user !!"
         }
     }
-    // deleteSpecificUserPort: async(id:number, user:getUserData) =>{
-
-    //     return "";
-    // },
 }

@@ -4,7 +4,7 @@ export type userPort = {
     registerUserPort(user: userReg): Promise<userReg>;
     loginUserPort(user: userLogin): Promise<returnUserData>;
     getAllUserPort(email?:string):Promise<returnUserData[]>;
-    getSpecificUserPort(user: getUserData):Promise<returnUserData>;
+    getSpecificUserPort(userID: number):Promise<returnUserData>;
     updateUserPort(user:returnUpdateUserData):Promise<returnUpdateUserData>;
     deleteAnyUserPort(id:number):Promise<string>;
     getAllUserPortIntermediate(user:userLogin):Promise<userReg[]>;

@@ -3,10 +3,11 @@ import { userPort } from "../port/users.port";
 
 export const createUserUseCase = async (data: userReg, userRepo:userPort) => {
 
-    const existedUser = await userRepo.getAllUserPort(data.email);
-    
-
-    if(!existedUser.length)
+    const existedUserList = await userRepo.getAllUserPort();
+    const existed = existedUserList.map((u) => {
+        return data.email === u.email;
+    })
+    if(!existed.length)
     {
         const newUser: userReg = data;
         const response = await userRepo.registerUserPort(newUser);
