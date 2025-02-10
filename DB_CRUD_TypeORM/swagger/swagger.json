@@ -78,7 +78,10 @@
           "200": {
             "description": "User updated successfully"
           },
-          "401": {
+          "404":{
+            "description":"User not found."
+          },
+          "400": {
             "description": "Bad request"
           },
           "500": {
@@ -109,6 +112,9 @@
           },
           "404": {
             "description": "User not found"
+          },
+          "400":{
+            "description":"Bad request"
           },
           "500": {
             "description": "Internal server error"
@@ -156,6 +162,9 @@
               }
             }
           },
+          "409":{
+            "description":"User already exist"
+          },
           "500": {
             "description": "Internal server error"
           }
@@ -183,17 +192,21 @@
         },
         "responses": {
           "200": {
-            "description": "User added successfully.",
+            "description": "Authentication successfull.",
             "content": {
               "application/json": {
                 "example": {
                   "message": "response message",
                   "response": {
+                    "message": "Authentication successfull",
                     "token": "oibfesoidbcoiboifnvibcsiboirnsv...."
                   }
                 }
               }
             }
+          },
+          "401":{
+            "description":"Authentication failed."
           },
           "500": {
             "description": "Internal server error"
