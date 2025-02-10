@@ -1,0 +1,42 @@
+{
+  "name": "DB-multer-Typeorm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/logger": "^0.0.5",
+    "@types/node-localstorage": "^1.3.3",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.7",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.12.0",
+    "node-localstorage": "^3.0.5",
+    "nodemon": "^3.1.9",
+    "reflect-metadata": "^0.2.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "ts-node-esm": "^0.0.6",
+    "tsx": "^4.19.2",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "start": "tsx ./src/Infrastructure/webserver/express/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migrate": "migration:run -- -d path-to-datasource-config",
+    "dev": "nodemon --exec ts-node ./src/infrastructure/webserver/express/server.ts",
+    "start:dev": "nodemon --exec node --loader ts-node/esm -r index.ts"
+  }
+}
