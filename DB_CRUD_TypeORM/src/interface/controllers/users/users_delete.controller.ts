@@ -8,7 +8,7 @@ import { constants } from "../../../infrastructure/utility/constants";
 export const deleteUserByIDController =
   (userRepo: userPort) => async (req: Request, res: Response) => {
     try {
-      const tokenData: {} = {
+      const updateUserData: {[key:string]:string|number} = {
         deleteUserID: parseInt(req.query.id as string),
         current_role: res.locals.user.role,
         current_id: res.locals.user.id,
@@ -18,7 +18,7 @@ export const deleteUserByIDController =
         async (transactionEntityManager: EntityManager) => {
           return await deleteUserUseCase(
             userRepo,
-            tokenData,
+            updateUserData,
             transactionEntityManager
           );
         }

@@ -29,9 +29,7 @@ export type userPort = {
 
   updateUserPort(
     entityManager:EntityManager,
-    updateUserData: updateUserType,
-    updateUserID:number
-
+    updateUserData: {[key:string]:number|string},
   ): Promise<void>;
 
   transactionWrapper: <T>(

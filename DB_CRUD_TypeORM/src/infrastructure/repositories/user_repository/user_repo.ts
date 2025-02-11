@@ -54,13 +54,12 @@ export const UserRepository: userPort = {
   updateUserPort: async (
     entityManager,
     updateUserData,
-    updateUserID
   ): Promise<void> => {
     await entityManager
       .createQueryBuilder()
       .update(t_user)
       .set(updateUserData)
-      .where("id = :id", { id: updateUserID })
+      .where("id = :id", { id: updateUserData.updateUserID })
       .execute();
 
     return;

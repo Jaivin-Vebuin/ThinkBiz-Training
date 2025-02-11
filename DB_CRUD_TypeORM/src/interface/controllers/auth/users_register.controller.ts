@@ -5,7 +5,6 @@ import { registerUserUsecase } from "../../../application/use_cases/register_use
 import { displayResponseFunction } from "../../../infrastructure/helpers/other/response_display";
 import { constants } from "../../../infrastructure/utility/constants";
 
-// Registration is creation
 export const registerUserController =
   (userRepo: userPort) =>
   async (req: Request, res: Response): Promise<void> => {

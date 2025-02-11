@@ -9,7 +9,7 @@ export const getUserController =
   (userRepo: userPort) => async (req: Request, res: Response) => {
     try {
       const isAllData:number = parseInt(req.query.isAll as string);
-      let userData: {};
+      let userData: {[key:string]:string|number};
 
       if (res.locals.user.role === "admin") {
         userData = {

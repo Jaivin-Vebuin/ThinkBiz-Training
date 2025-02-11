@@ -8,29 +8,32 @@ import { constants } from "../../../infrastructure/utility/constants";
 export const updateUserByIDController =
   (userRepo: userPort) => async (req: Request, res: Response) => {
     try {
-      const tokenData: {} = {
-        updateUserID: parseInt(req.query.id as string),
-        current_id: res.locals.user.id,
-      };
+      const updateUserID = parseInt(req.query.id as string);
+      const current_id = res.locals.user.id;
 
-      const updationData = req.body;
-
-      await userRepo.transactionWrapper(
-        async (transactionEntityManager: EntityManager) => {
-          return await updateUserUseCase(
-            userRepo,
-            tokenData,
-            updationData,
-            transactionEntityManager
-          );
-        }
-      );
-
-      displayResponseFunction(
-        constants.SUCCESS_STATUS.OK,
-        res,
-        constants.SUCCESS_MESSAGE.USER_UPDATED
-      );
+      if (updateUserID !== current_id) {
+        displayResponseFunction(
+          constants.ERROR_STATUS.AUTHENTICATION_FAILED,
+          res,
+          constants.ERROR_MESSAGE.INVALID_ACCESS
+        );
+      } else {
+        const updationData = { ...req.body, updateUserID };
+        await userRepo.transactionWrapper(
+          async (transactionEntityManager: EntityManager) => {
+            return await updateUserUseCase(
+              userRepo,
+              updationData,
+              transactionEntityManager
+            );
+          }
+        );
+        displayResponseFunction(
+          constants.SUCCESS_STATUS.OK,
+          res,
+          constants.SUCCESS_MESSAGE.USER_UPDATED
+        );
+      }
     } catch (error) {
       if (error instanceof Error) {
         if (error.message === constants.ERROR_MESSAGE.USER_NOT_FOUND) {
@@ -40,12 +43,12 @@ export const updateUserByIDController =
             constants.ERROR_MESSAGE.USER_NOT_FOUND
           );
         }
-        if (error.message === constants.ERROR_MESSAGE.INVALID_ACCESS){
+        if (error.message === constants.ERROR_MESSAGE.INVALID_ACCESS) {
           displayResponseFunction(
             constants.ERROR_STATUS.BAD_REQUEST,
             res,
             constants.ERROR_MESSAGE.INVALID_ACCESS
-          )
+          );
         }
       }
       res
