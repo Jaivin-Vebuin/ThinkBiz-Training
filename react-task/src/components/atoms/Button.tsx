@@ -3,7 +3,7 @@ import React from "react";
 interface ButtonPropsType {
   text: string;
   handleOnClick: () => {};
-  isDisabled: boolean;
+  isDisabled?: boolean;
 }
 
 
@@ -11,7 +11,7 @@ interface ButtonPropsType {
 const Button:React.FC<ButtonPropsType> = ({ text, handleOnClick, isDisabled }) => {
   return (
     <>
-      <button onClick={handleOnClick} disabled={isDisabled}>{text}</button>
+      <button onClick={handleOnClick}>{text}</button>
     </>
   );
 };
