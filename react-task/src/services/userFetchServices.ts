@@ -5,7 +5,7 @@ import apiClient from "./apiClient";
 export const getUserAPI = async () => {
     try {
       const response = await apiClient.get("/");
-      console.log("fix user : ",response.data)
+     
       return response;
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -16,7 +16,7 @@ export const getUserAPI = async () => {
   export const getAllUserAPI = async () => {
     try {
       const response = await apiClient.get(axiosConstants.getUserData + axiosConstants.getAllQuery);
-      console.log("all data:",response.data)
+    
       return response;
     } catch (error) {
       console.error('Error fetching all user data:', error);

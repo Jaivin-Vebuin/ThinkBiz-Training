@@ -24,7 +24,7 @@ const LanguageSelector: React.FC = () => {
     if (currentLanguage) {
       i18n.changeLanguage(currentLanguage);
     }
-  }, [currentLanguage, i18n]);
+  }, [currentLanguage, i18n ]);
 
   return (
     <>

@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
+
 import AuthForm from "../molecules/AuthForm";
-import { RootState } from "../../redux/store/store";
+import LanguageSelector from "../molecules/LanguageSelector";
+import { LanguageSelectorWrapper, LoginWrapper } from "../styles/AuthFormStyles";
 
 const Login = () => {
-    const token = useSelector((state:RootState)=>state.auth.token)
-    console.log(token)
+
   return (
-    <>
-      <AuthForm formType="login" formTitle="login" />
-    </>
+    <LoginWrapper>
+      <LanguageSelectorWrapper>
+        <LanguageSelector />
+      </LanguageSelectorWrapper>
+      <AuthForm formType="login"/>
+    </LoginWrapper>
   );
 };
 

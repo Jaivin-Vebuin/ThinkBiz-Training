@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonPropsType {
   text: string;
-  handleOnClick: () => {};
+  handleOnClick: () => void;
   isDisabled?: boolean;
 }
 

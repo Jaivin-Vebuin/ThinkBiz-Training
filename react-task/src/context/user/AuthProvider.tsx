@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
-import { getUserAPI, getAllUserAPI } from "../../services/userFetchServices";
+import { getUserAPI } from "../../services/userFetchServices";
 
 type UserDetails = {
   id: string;
@@ -14,7 +14,7 @@ type UserDetails = {
 type AuthContextType = {
   isLoggedIn: boolean;
   currentUser: UserDetails | null;
-  allUsers: UserDetails[];
+  // allUsers: UserDetails[];
 };
 
 type AuthProviderProps = {
@@ -24,7 +24,7 @@ type AuthProviderProps = {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const token = useSelector((state: RootState) => state.auth.token);
   const [currentUser, setCurrentUser] = useState<UserDetails | null>(null);
-  const [allUsers, setAllUsers] = useState<UserDetails[]>([]);
+  // const [allUsers, setAllUsers] = useState<UserDetails[]>([]);
 
   const isLoggedIn = token ? true : false;
 
@@ -32,7 +32,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const fetchUserDetails = async () => {
       try {
         const userResponse = await getUserAPI();
-        setCurrentUser(userResponse?.data || null);
+        const data = userResponse?.data.message[0];
+    
+        setCurrentUser(data || null);
       } catch (error) {
         console.error("Error fetching current user details:", error);
       }
@@ -43,23 +45,25 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }, [isLoggedIn, token]);
 
-  useEffect(() => {
-    const fetchAllUserDetails = async () => {
-      try {
-        const userResponse = await getAllUserAPI();
-        setAllUsers(userResponse?.data || null);
-      } catch (error) {
-        console.error("Error fetching current user details:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchAllUserDetails = async () => {
+  //     try {
+  //       const userResponse = await getAllUserAPI();
+  //       setAllUsers(userResponse?.data || null);
+  //     } catch (error) {
+  //       console.error("Error fetching current user details:", error);
+  //     }
+  //   };
 
-    if (currentUser?.role === "admin") {
-      fetchAllUserDetails();
-    }
-  }, [currentUser]);
+  //   if (currentUser?.role === "admin") {
+  //     fetchAllUserDetails();
+  //   }
+  // }, [currentUser]);
 
+
+  // <AuthContext.Provider value={{ isLoggedIn, currentUser, allUsers }}></AuthContext.Provider>
   return (
-    <AuthContext.Provider value={{ isLoggedIn, currentUser, allUsers }}>
+    <AuthContext.Provider value={{ isLoggedIn, currentUser }}>
       {children}
     </AuthContext.Provider>
   );

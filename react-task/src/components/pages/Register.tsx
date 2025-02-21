@@ -1,12 +1,16 @@
-import AuthForm from "../molecules/AuthForm"
-
+import AuthForm from "../molecules/AuthForm";
+import LanguageSelector from "../molecules/LanguageSelector";
+import { LanguageSelectorWrapper, RegisterWrapper } from "../styles/AuthFormStyles";
 
 const Register = () => {
   return (
-    <>
-      <AuthForm formType="register" formTitle="register" />
-    </>
-  )
-}
+    <RegisterWrapper>
+      <LanguageSelectorWrapper>
+        <LanguageSelector />
+      </LanguageSelectorWrapper>
+      <AuthForm formType="register" />
+    </RegisterWrapper>
+  );
+};
 
-export default Register
+export default Register;

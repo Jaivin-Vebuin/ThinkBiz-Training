@@ -1,5 +1,6 @@
 import React from 'react';
 import Option from './Option';
+import { useTranslation } from 'react-i18next';
 
 interface SelectPropsType {
   name: string;
@@ -14,12 +15,13 @@ interface SelectPropsType {
 }
 
 const Select: React.FC<SelectPropsType> = ({ name, options, handleOnChange, value, labelText, registerProps, htmlFor, error, inputRef }) => {
+  const {t} = useTranslation();
   return (
     <div>
       <label htmlFor={htmlFor}>{labelText}</label>
       <select name={name} value={value} onChange={handleOnChange} ref={inputRef} {...registerProps}> {/* Add name and ref */}
         {options.map((option) => (
-          <Option key={option.value} value={option.value} label={option.label} />
+          <Option key={option.value} value={option.value} label={t(option.label)} />
         ))}
       </select>
       {error && <p style={{ color: 'red' }}>{error}</p>}
