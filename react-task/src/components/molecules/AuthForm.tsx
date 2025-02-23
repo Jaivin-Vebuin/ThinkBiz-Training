@@ -67,7 +67,7 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
                   name="userName"
                   handleOnChange={() => {}}
                   inputType="text"
-                  placeholder="Enter your Name"
+                  placeholder={t("namePlaceHolder")}
                   labelText={t("Name")}
                   htmlFor="userName"
                   registerProps={register("userName")}
@@ -83,7 +83,7 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
                   name="userEmail"
                   handleOnChange={() => {}}
                   inputType="text"
-                  placeholder="example@example.com"
+                  placeholder={t("emailPlaceHolder")}
                   labelText={t("Email")}
                   htmlFor="userEmail"
                   registerProps={register("userEmail")}
@@ -130,7 +130,7 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
                   name="userAge"
                   handleOnChange={() => {}}
                   inputType="number"
-                  placeholder="ex. 18"
+                  placeholder={t("agePlaceHolder")}
                   labelText={t("Age")}
                   htmlFor="userAge"
                   registerProps={register("userAge")}
@@ -151,7 +151,7 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
                   name="userEmail"
                   handleOnChange={() => {}}
                   inputType="text"
-                  placeholder="example@example.com"
+                  placeholder={t("emailPlaceHolder")}
                   labelText={t("Email")}
                   htmlFor="userEmail"
                   registerProps={register("userEmail")}
@@ -183,7 +183,7 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
         </div>
         <ButtonStyle>
           <Button
-            text={formType === "login" ? t("loginFormButton") : "register"}
+            text={formType === "login" ? t("loginFormButton") : t("registerFormButton")}
             handleOnClick={handleSubmit(onSubmit)}
           />
         </ButtonStyle>

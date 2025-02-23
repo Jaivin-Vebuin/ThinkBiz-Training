@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarPropsType> = ({ role, currentUser }) => {
         )}
         <ProfileDropdown>
           <ProfileButton onClick={() => setDropdownOpen(!dropdownOpen)}>
-            Profile
+            {t("profileButton")}
           </ProfileButton>
           <DropdownMenu open={dropdownOpen}>
             <p>{t("Name")}: {currentUser?.name}</p>

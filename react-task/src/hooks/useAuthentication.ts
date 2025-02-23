@@ -8,22 +8,24 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 function useAuthentication() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {t} = useTranslation();
 
   const registerUser = async (data: registerDataType) => {
     try {
       
       await registerAPI(data);
       navigate('/login')
-      toast.success("Registration successful! Please log in.", {
+      toast.success(t("registrationToastSuccess"), {
         position: "top-center",
       });
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(`Registration failed: ${error.message}`, {
+        toast.error(`${t("registrationToastError")}: ${error.message}`, {
           position: "top-center",
         });
       }
@@ -38,15 +40,15 @@ function useAuthentication() {
       dispatch(setAuthToken(token));
       if (loginResponse.status === 200) {
        
-        toast.success("Login successful!", { position: "top-center" });
+        toast.success(t("loginToastSuccess"), { position: "top-center" });
       } else {
-        toast.error(`Login failed: ${loginResponse.data.message}`, {
+        toast.error(`${t("loginToastError")}: ${loginResponse.data.message}`, {
           position: "top-center",
         });
       }
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(`Login failed: ${error.message}`, {
+        toast.error(`${t("loginToastError")}: ${error.message}`, {
           position: "top-center",
         });
       }

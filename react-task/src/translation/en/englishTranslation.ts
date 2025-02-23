@@ -1,5 +1,5 @@
 export const englishTranslation = {
-    greetings:"Hello Welcome!",
+    greetings:"Welcome!",
     Name:"Name",
     Email:"Email",
     Password:"Password",
@@ -15,7 +15,14 @@ export const englishTranslation = {
     forRegisteredUser:"Already a user ?",
     namePlaceHolder:"Enter your name",
     emailPlaceHolder:"example@domain.com",
+    agePlaceHolder:"ex. 18",
     admin:"admin",
-    user:"user"
-    
+    user:"user",
+    dashboardContent:"Dashboard",
+    reportPageContent:"Report Page",
+    profileButton:"Profile",
+    registrationToastSuccess:"Registration successful! Please log in.",
+    registrationToastError:"Registration failed",
+    loginToastSuccess:"Login successful!",
+    loginToastError:"Login failed",
 };

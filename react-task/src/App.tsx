@@ -15,11 +15,15 @@ import i18n from "./translation/i18n";
 function App() {
   const user = useUser();
   const isLoggedIn = user.isLoggedIn;
+
   const currentLanguage = useSelector(
     (state: RootState) => state.lang.language
   );
+
   useEffect(() => {
-    console.log({currentLanguage})
+    if (currentLanguage) {
+      i18n.changeLanguage(currentLanguage);
+    }
   }, [currentLanguage, i18n ]);
 
   return (

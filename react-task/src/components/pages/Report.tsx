@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next"
+
 const Report = () => {
+    const {t} = useTranslation();
   return (
     <div>
-      <h1>Report Route</h1>
+      <h1>{t("reportPageContent")}</h1>
     </div>
   )
 }
