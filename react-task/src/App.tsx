@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store/store";
 import i18n from "./translation/i18n";
+import ErrorPage from "./components/pages/ErrorPage";
 
 function App() {
   const user = useUser();
@@ -24,7 +25,7 @@ function App() {
     if (currentLanguage) {
       i18n.changeLanguage(currentLanguage);
     }
-  }, [currentLanguage, i18n ]);
+  }, [currentLanguage, i18n]);
 
   return (
     <>
@@ -50,12 +51,16 @@ function App() {
             element={isLoggedIn ? <Navigate to="/dashboard" /> : <Register />}
           />
           <Route element={<ProtectedRoute />}>
-
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="report" element={<Report />} />
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<Dashboard />} />
+              {user.currentUser?.role === "admin" && (
+                <>
+                  <Route path="report" element={<Report />} />
+                </>
+              )}
+            </Route>
           </Route>
-          </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>

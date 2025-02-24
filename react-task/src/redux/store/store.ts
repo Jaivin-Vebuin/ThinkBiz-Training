@@ -13,7 +13,7 @@ const middleware = (getDefaultMiddleware: any) => {
 };
 
 const persistConfig = {
-  key: "current_lang",
+  key: "root",
   storage,
 };
 
