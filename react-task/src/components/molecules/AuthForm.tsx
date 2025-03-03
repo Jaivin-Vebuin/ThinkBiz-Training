@@ -7,6 +7,7 @@ import {
   TitleStyle,
   InputFieldStyle,
   ButtonStyle,
+  FormRedirectionButton,
 } from "../styles/AuthFormStyles";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
@@ -39,16 +40,14 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
 
   const onSubmit: SubmitHandler<any> = (data) => {
     if (formType === "login") {
-     
       loginUser({ email: data.userEmail, password: data.userPassword });
     } else {
-    
       registerUser({
         name: data.userName,
         email: data.userEmail,
         password: data.userPassword,
         role: data.userRole,
-        age: data.userAge,
+        age: parseInt(data.userAge),
       });
     }
   };
@@ -183,7 +182,11 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
         </div>
         <ButtonStyle>
           <Button
-            text={formType === "login" ? t("loginFormButton") : t("registerFormButton")}
+            text={
+              formType === "login"
+                ? t("loginFormButton")
+                : t("registerFormButton")
+            }
             handleOnClick={handleSubmit(onSubmit)}
           />
         </ButtonStyle>
@@ -199,44 +202,32 @@ const AuthForm: React.FC<formPropsType> = ({ formType }) => {
         {formType === "login" && (
           <>
             {t("forNewUser")}
-            <button
-              style={{
-                border: "none",
-                background: "white",
-                padding: "5px 10px",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/register");
-              }}
-            >
-              {t("registerFormButton")}
-            </button>
+            <FormRedirectionButton>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/register");
+                }}
+              >
+                {t("registerFormButton")}
+              </button>
+            </FormRedirectionButton>
           </>
         )}
 
         {formType === "register" && (
           <>
             {t("forRegisteredUser")}
-            <button
-              style={{
-                border: "none",
-                background: "white",
-                padding: "5px 10px",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              onClick={(event) => {
-                event.preventDefault();
-                navigate("/login");
-              }}
-            >
-              {t("loginFormButton")}
-            </button>
+            <FormRedirectionButton>
+              <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate("/login");
+                }}
+              >
+                {t("loginFormButton")}
+              </button>
+            </FormRedirectionButton>
           </>
         )}
       </div>

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { languageReduxInitStateType } from "../../../../data/model/types/reduxInitialStateTypes";
 import { sliceNames } from "../../../../utils/constants/app.constants";
+import { languageReduxInitStateType } from "../../../../data/model/types/reduxTypes/reduxTypes";
 
 const initialState: languageReduxInitStateType= {
     language: "en",

@@ -1,30 +1,12 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
 import { getUserAPI } from "../../services/userFetchServices";
-
-type UserDetails = {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  age:number;
-};
-
-type AuthContextType = {
-  isLoggedIn: boolean;
-  currentUser: UserDetails | null;
-  // allUsers: UserDetails[];
-};
-
-type AuthProviderProps = {
-  children: ReactNode;
-};
+import { AuthContextType, AuthProviderProps, UserDetails } from "../../data/model/types/authProvider/authProviderTypes";
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const token = useSelector((state: RootState) => state.auth.token);
   const [currentUser, setCurrentUser] = useState<UserDetails | null>(null);
-  // const [allUsers, setAllUsers] = useState<UserDetails[]>([]);
 
   const isLoggedIn = token ? true : false;
 
@@ -45,23 +27,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }, [isLoggedIn, token]);
 
-  // useEffect(() => {
-  //   const fetchAllUserDetails = async () => {
-  //     try {
-  //       const userResponse = await getAllUserAPI();
-  //       setAllUsers(userResponse?.data || null);
-  //     } catch (error) {
-  //       console.error("Error fetching current user details:", error);
-  //     }
-  //   };
-
-  //   if (currentUser?.role === "admin") {
-  //     fetchAllUserDetails();
-  //   }
-  // }, [currentUser]);
-
-
-  // <AuthContext.Provider value={{ isLoggedIn, currentUser, allUsers }}></AuthContext.Provider>
   return (
     <AuthContext.Provider value={{ isLoggedIn, currentUser }}>
       {children}

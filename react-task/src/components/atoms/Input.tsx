@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { ErrorFieldStyle } from "../styles/AuthFormStyles";
 
 interface InputProps {
   name: string;
@@ -9,11 +10,21 @@ interface InputProps {
   inputType: string;
   labelText: string;
   htmlFor: string;
-  registerProps?:any;
+  registerProps?: any;
   error?: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, value, handleOnChange, inputType, placeholder, labelText, htmlFor, registerProps, error }) => {
+const Input: React.FC<InputProps> = ({
+  name,
+  value,
+  handleOnChange,
+  inputType,
+  placeholder,
+  labelText,
+  htmlFor,
+  registerProps,
+  error,
+}) => {
   return (
     <div>
       <label htmlFor={htmlFor}>{labelText}</label>
@@ -25,7 +36,11 @@ const Input: React.FC<InputProps> = ({ name, value, handleOnChange, inputType, p
         placeholder={placeholder}
         {...registerProps}
       />
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message */}
+      {error && (
+        <ErrorFieldStyle>
+          <p>{error}</p>
+        </ErrorFieldStyle>
+      )}
     </div>
   );
 };

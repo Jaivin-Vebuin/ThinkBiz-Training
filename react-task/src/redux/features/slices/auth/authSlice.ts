@@ -1,11 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { authReduxInitStateType } from "../../../../data/model/types/reduxInitialStateTypes";
 import { sliceNames } from "../../../../utils/constants/app.constants";
-
-type AuthTokenPayload = {
-  message: string;
-  token: string;
-};
+import { authReduxInitStateType, AuthTokenPayload } from "../../../../data/model/types/reduxTypes/reduxTypes";
 
 const initialState: authReduxInitStateType = {
   message: "",

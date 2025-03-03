@@ -1,32 +1,59 @@
-import React from 'react';
-import Option from './Option';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import Option from "./Option";
+import { useTranslation } from "react-i18next";
+import { ErrorFieldStyle } from "../styles/AuthFormStyles";
 
 interface SelectPropsType {
   name: string;
-  options: { value: string, label: string }[];
+  options: { value: string; label: string }[];
   handleOnChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
   labelText?: string;
   htmlFor?: string;
-  error?: string; 
+  error?: string;
   inputRef?: React.Ref<HTMLSelectElement>;
-  registerProps?:any; 
+  registerProps?: any;
 }
 
-const Select: React.FC<SelectPropsType> = ({ name, options, handleOnChange, value, labelText, registerProps, htmlFor, error, inputRef }) => {
-  const {t} = useTranslation();
+const Select: React.FC<SelectPropsType> = ({
+  name,
+  options,
+  handleOnChange,
+  value,
+  labelText,
+  registerProps,
+  htmlFor,
+  error,
+  inputRef,
+}) => {
+  const { t } = useTranslation();
   return (
     <div>
       <label htmlFor={htmlFor}>{labelText}</label>
-      <select name={name} value={value} onChange={handleOnChange} ref={inputRef} {...registerProps}> {/* Add name and ref */}
+      <select
+        name={name}
+        value={value}
+        onChange={handleOnChange}
+        ref={inputRef}
+        {...registerProps}
+      >
+        {" "}
+        {/* Add name and ref */}
         {options.map((option) => (
-          <Option key={option.value} value={option.value} label={t(option.label)} />
+          <Option
+            key={option.value}
+            value={option.value}
+            label={t(option.label)}
+          />
         ))}
       </select>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && (
+        <ErrorFieldStyle>
+          <p>{error}</p>
+        </ErrorFieldStyle>
+      )}
     </div>
   );
-}
+};
 
 export default Select;

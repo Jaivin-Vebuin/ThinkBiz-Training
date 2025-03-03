@@ -11,8 +11,7 @@ export const getUserAPI = async () => {
       console.error('Error fetching user data:', error);
     }
   };
-  
-  // for admin only
+
   export const getAllUserAPI = async () => {
     try {
       const response = await apiClient.get(axiosConstants.getUserData + axiosConstants.getAllQuery);

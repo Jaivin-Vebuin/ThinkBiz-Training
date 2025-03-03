@@ -8,10 +8,10 @@ interface ButtonPropsType {
 
 
 
-const Button:React.FC<ButtonPropsType> = ({ text, handleOnClick, isDisabled }) => {
+const Button:React.FC<ButtonPropsType> = ({ text, handleOnClick, isDisabled=false }) => {
   return (
     <>
-      <button onClick={handleOnClick}>{text}</button>
+      <button onClick={handleOnClick} disabled={isDisabled}>{text}</button>
     </>
   );
 };

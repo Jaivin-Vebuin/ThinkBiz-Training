@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const ErrorFieldStyle = styled.p`
+  color: red;
+`;
 
 export const FormStyle = styled.form`
   display: flex;
@@ -24,7 +28,8 @@ export const InputFieldStyle = styled.div`
   margin-bottom: 20px;
   width: 100%;
 
-  input, select {
+  input,
+  select {
     width: 100%;
     padding: 12px;
     border: none;
@@ -105,4 +110,16 @@ export const RegisterWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #89f7fe, #66a6ff);
+`;
+
+export const FormRedirectionButton = styled.button`
+  border: none;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
