@@ -2,3 +2,4 @@
 /coverage
 /backup
 ./.env
+/ormlogs.log
