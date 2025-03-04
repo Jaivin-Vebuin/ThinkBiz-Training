@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component renders input with label and handles change event 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      for="test-input"
+    >
+      Test Label
+    </label>
+    <input
+      id="test-input"
+      name="test-input"
+      type="text"
+    />
+     
+  </div>
+</DocumentFragment>
+`;

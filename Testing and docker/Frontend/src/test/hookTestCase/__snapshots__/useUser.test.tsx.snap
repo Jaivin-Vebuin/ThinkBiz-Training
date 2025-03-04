@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useUser Hook matches the snapshot 1`] = `
+{
+  "currentUser": {
+    "age": 30,
+    "email": "john.doe@example.com",
+    "id": "123",
+    "name": "John Doe",
+    "role": "admin",
+  },
+  "isLoggedIn": true,
+}
+`;
