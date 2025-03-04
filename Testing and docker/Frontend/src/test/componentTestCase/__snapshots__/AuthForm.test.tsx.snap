@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth Form matches snapshot for login form 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-FEMpB jGlMdh"
+  >
+    <h1
+      class="sc-gjcoXW jJIRPV"
+    >
+      formTitleLogin
+    </h1>
+    <div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userEmail"
+          >
+            Email
+          </label>
+          <input
+            id="userEmail"
+            name="userEmail"
+            placeholder="emailPlaceHolder"
+            type="text"
+          />
+           
+        </div>
+      </div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userPassword"
+          >
+            Password
+          </label>
+          <input
+            id="userPassword"
+            name="userPassword"
+            placeholder="********"
+            type="password"
+          />
+           
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-fLDLck jlNlhs"
+    >
+      <button>
+        loginFormButton
+      </button>
+    </div>
+  </form>
+  <div
+    style="padding: 15px; border-radius: 8px; text-align: center; margin: 20px;"
+  >
+    forNewUser
+    <button
+      style="background: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer;"
+    >
+      registerFormButton
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Auth Form matches snapshot for register form 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-FEMpB jGlMdh"
+  >
+    <h1
+      class="sc-gjcoXW jJIRPV"
+    >
+      formTitleRegister
+    </h1>
+    <div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userName"
+          >
+            Name
+          </label>
+          <input
+            id="userName"
+            name="userName"
+            placeholder="namePlaceHolder"
+            type="text"
+          />
+           
+        </div>
+      </div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userEmail"
+          >
+            Email
+          </label>
+          <input
+            id="userEmail"
+            name="userEmail"
+            placeholder="emailPlaceHolder"
+            type="text"
+          />
+           
+        </div>
+      </div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userPassword"
+          >
+            Password
+          </label>
+          <input
+            id="userPassword"
+            name="userPassword"
+            placeholder="********"
+            type="password"
+          />
+           
+        </div>
+      </div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userRole"
+          >
+            Role
+          </label>
+          <select
+            id="userRole"
+            name="userRole"
+          >
+             
+            <option
+              value="admin"
+            >
+              admin
+            </option>
+            ;
+            <option
+              value="user"
+            >
+              user
+            </option>
+            ;
+          </select>
+        </div>
+      </div>
+      <div
+        class="sc-dVBluf hYubA-d"
+      >
+        <div>
+          <label
+            for="userAge"
+          >
+            Age
+          </label>
+          <input
+            id="userAge"
+            name="userAge"
+            placeholder="agePlaceHolder"
+            type="number"
+          />
+           
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-fLDLck jlNlhs"
+    >
+      <button>
+        registerFormButton
+      </button>
+    </div>
+  </form>
+  <div
+    style="padding: 15px; border-radius: 8px; text-align: center; margin: 20px;"
+  >
+    forRegisteredUser
+    <button
+      style="background: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer;"
+    >
+      loginFormButton
+    </button>
+  </div>
+</DocumentFragment>
+`;
