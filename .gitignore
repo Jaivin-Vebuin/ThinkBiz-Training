@@ -1,0 +1,5 @@
+/DB_CRUD/node_modules
+/DB_CRUD/.env
+/DB_CRUD_Typeorm/node_modules
+/DB_CRUD_Typeorm/.env
+/DB_CRUD_Typeorm/ormlogs.log

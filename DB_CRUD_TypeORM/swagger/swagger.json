@@ -1,0 +1,288 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "User Crud",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [{ "bearerAuth": [] }],
+  "apis": ["src/Interface/routes/*.ts"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["user"],
+        "summary": "Get users",
+        "responses": {
+          "200": {
+            "description": "Request succeeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/component/schemas/getUser"
+                },
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "userName",
+                    "email": "userName@example.com",
+                    "role": "U/A",
+                    "age": "20"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "User not found."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+
+      "patch": {
+        "tags": ["user"],
+        "summary": "Update a user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/component/schemas/patchUser"
+              },
+              "example": {
+                "id": 1,
+                "name": "update name if need to (userName)",
+                "email": "update email if need to (name@gmail.com)",
+                "age": "update age if need to (19)"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully"
+          },
+          "404":{
+            "description":"User not found."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+
+      "delete": {
+        "tags": ["user"],
+        "summary": "Delete a user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type":"number"
+              },
+              "example": {
+                "id": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User deleted successfully"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "400":{
+            "description":"Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+
+    "/users/register": {
+      "post": {
+        "tags": ["Register user"],
+        "summary": "Create a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/component/schemas/getUser"
+              },
+              "example": {
+                "id": 1,
+                "name": "userName",
+                "email": "userName@example.com",
+                "role": "U/A",
+                "age": "20"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User added successfully.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "response message",
+                  "response": {
+                    "id": 1,
+                    "name": "userName",
+                    "email": "userName@example.com",
+                    "role": "U/A",
+                    "age": "20"
+                  }
+                }
+              }
+            }
+          },
+          "409":{
+            "description":"User already exist"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+
+    "/users/login": {
+      "post": {
+        "tags": ["login user"],
+        "summary": "login a user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/component/schemas/postUser"
+              },
+              "example": {
+                "email": "userName@example.com",
+                "password": "Password@1234"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication successfull.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "response message",
+                  "response": {
+                    "message": "Authentication successfull",
+                    "token": "oibfesoidbcoiboifnvibcsiboirnsv...."
+                  }
+                }
+              }
+            }
+          },
+          "401":{
+            "description":"Authentication failed."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "component": {
+    "schemas": {
+      "postUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          }
+        },
+        "required": ["email", "password"]
+      },
+      "getUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          }
+        },
+        "required": []
+      },
+      "patchUser":{
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          }
+        },
+        "required": ["id"]
+      }
+    }
+  }
+}
