@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      - SERVER_PORT=4000
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=roottbz123
+      - DB_NAME=userdatabase
+      - JWT_SECRET=NoOneGonnaKnowThis!!
+    command: ["yarn", "dev"]
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: roottbz123
+      MYSQL_DATABASE: userdatabase
+    ports:
+      - "3307:3306"
